@@ -1,0 +1,131 @@
+<!doctype>
+<html>
+<head>
+	<title>Title</title>
+	<script type="text/javascript">
+
+		var ENABLE_DEBUG=!1,ENABLE_IE_SUPPORT=!0;String.prototype.hasOwnProperty("trim")||(String.prototype.trim=function(){return this.replace(/^(\s|\r|\n|\r\n)*|(\s|\r|\n|\r\n)*$/g,"")}); var DOC=document,WIN=window,IsTouch="ontouchstart"in WIN,UA=WIN.navigator.userAgent,IsAndroid=/Android|HTC/i.test(UA),IsIPad=!IsAndroid&&/iPad/i.test(UA),IsIPhone=!IsAndroid&&/iPod|iPhone/i.test(UA),IsIOS=IsIPad||IsIPhone,IsIEMobile=/IEMobile/i.test(UA),IsIE=!!DOC.all,PixelRatio=parseFloat(WIN.devicePixelRatio)||1,MAX_TOUCHMOVE_DISTANCE_FOR_CLICK=IsAndroid?10:6,START_EVENT=IsTouch?"touchstart":"mousedown",MOVE_EVENT=IsTouch?"touchmove":"mousemove",END_EVENT=IsTouch?"touchend":"mouseup",_hasGetElementsByClassName= DOC.getElementsByClassName,ScreenSizeCorrect=1;if(ENABLE_IE_SUPPORT&&IsIE)try{DOC.execCommand("BackgroundImageCache",!1,!0)}catch(e$$12){}IsAndroid&&(WIN.screen.width/WIN.innerWidth).toFixed(2)==PixelRatio.toFixed(2)&&(ScreenSizeCorrect=1/PixelRatio); var RR={uid:1,$:function(a,b){return new RR.fn(a,b)},selectorAll:DOC.querySelectorAll?function(a,b){b=b||DOC;for(var c=a.slice(1),d,e=!0,f="+~[>#. ".split(""),g=f.length;g--;)if(-1!=c.indexOf(f[g])){e=!1;break}return e?"#"==a.charAt(0)?(d=DOC.getElementById(c))?[d]:[]:_hasGetElementsByClassName&&"."==a.charAt(0)?b.getElementsByClassName(c):b.getElementsByTagName(a):b.querySelectorAll(a)}:function(a,b){return[]},fn:function(a,b){this.context=[];if(a)if(a.nodeType||a===WIN)this.context=[a],this.length= 1;else if("string"===typeof a){var c=a.length;if("<"===a.charAt(0)&&2<c&&">"===a.charAt(c-1)){a=a.replace(/<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,"<$1></$2>");c=DOC.createElement("div");c.innerHTML=a;for(var d=0,e=c.childNodes.length;d<e;d++)this.context.push(c.childNodes[d])}else b instanceof RR.fn&&(b=b.context[0]),this.context=RR.selectorAll(a,b);this.length=this.context.length}else{if(a instanceof RR.fn)return a}else this.length=0;return this}}; RR.fn.prototype={each:function(a){for(var b=0,c=this.length,d;b<c;b++)d=this.context[b],a.call(this,d,b);return this}}; var $=RR.$,JSON=WIN.JSON||{$specialChars:{"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},$replaceChars:function(a){return JSON.$specialChars[a]||"\\u00"+Math.floor(a.charCodeAt()/16).toString(16)+(a.charCodeAt()%16).toString(16)},stringify:function(a){type=a instanceof Array?"array":typeof a;switch(type){case "string":return'"'+a.replace(/[\x00-\x1f\\"]/g,JSON.$replaceChars)+'"';case "array":for(var b=[],c=0,d=a.length;c<d;c++)b.push(JSON.stringify(a[c]));return"["+ b.join(",")+"]";case "object":case "hash":b=[];for(c in a)d=a[c],(d=JSON.stringify(d))&&b.push(JSON.stringify(c)+":"+d);return"{"+b.join(",")+"}";case "number":case "boolean":return String(a);case !1:return"null"}return null},parse:function(a){return eval("("+a+")")}},Storage=function(a,b){var c=Storage.getStorage();if(c){if("undefined"===typeof b)return(b=c.getItem(a))&&JSON.parse(b);c.setItem(a,JSON.stringify(b))}}; Storage.getStorage=function(){var a;try{a=WIN.localStorage}catch(b){ENABLE_DEBUG&&alert("localStorage is not supported")}Storage.getStorage=function(){return WIN.localStorage};return a};Storage.clear=function(a){var b=Storage.getStorage();if(b)if(a)for(var c in b)0===c.indexOf(a)&&b.removeItem(c);else b.clear()}; var Notification={reg:function(a,b){Notification._notificationData.hasOwnProperty(a)?Notification._notificationData[a].push(b):Notification._notificationData[a]=[b]},fire:function(a,b,c){c=c||WIN;b&&!(b instanceof Array)&&(b=[b]);a=Notification._notificationData[a]||[];var d,e=a.length;for(d=0;d<e;d++)a[d].apply(c,b)},_notificationData:{}},URL={getQueryData:function(a){a=a.replace(/^\?+/,"").replace(/&amp;/,"&");a=a.split("&");for(var b=a.length,c={};b--;)item=a[b].split("="),item[0]&&(c[item[0]]= item[1]||"");return c},getQueryString:function(a,b){var c=b?URL.getElSearchString(b):WIN.location.search.substring(1);return URL.getQueryData(c)[a]||""},getElSearchString:function(a){var b=a.search||"";if(!b){a="FORM"==a.nodeName?a.getAttribute("action"):a.getAttribute("href");var c=a.indexOf("?");-1!==c&&(b=a.slice(c))}return b},objToQueryString:function(a){var b=[],c;for(c in a)b.push(c+"="+encodeURIComponent(a[c]));return b.join("&")}},Cookie={isEnabled:!1,set:function(a,b,c){var d=new Date;d.setTime(d.getTime()+ 36E5*(c||24));a=escape(a)+"="+escape(b)+";expires="+d.toGMTString()+";path=/";DOC.cookie=a},get:function(a){for(var b=DOC.cookie.split(";"),c,d=0;d<b.length;d++)if(c=b[d].split("="),c[0].trim()==a)return unescape(c[1]);return null},remove:function(a){Cookie.set(a,"",-1E3)},test:function(){Cookie.set("_c_t_","1");Cookie.isEnabled="1"===Cookie.get("_c_t_");Cookie.remove("_c_t_")}};RR.fn.prototype.ready=function(a){!0===RR.loader.isLoaded?a():(RR.loader.callbacks.push(a),RR.loader.init());return this}; RR.fn.prototype.remove=function(){return this.each(function(a){a.parentNode.removeChild(a)})};RR.insertNodeBefore=function(a,b,c){if(a.nodeType)b.insertBefore(a,c);else if(a instanceof RR.fn)for(var d=0,e=a.length;d<e;d++)b.insertBefore(a.context[d],c);else if("string"===typeof a){var f=DOC.createElement("div");f.innerHTML=a;d=0;for(e=f.childNodes.length;d<e;d++)b.insertBefore(f.childNodes[0],c)}};RR.fn.prototype.before=function(a){return this.each(function(b){RR.insertNodeBefore(a,b.parentNode,b)})}; RR.fn.prototype.after=function(a){return this.each(function(b){RR.insertNodeBefore(a,b.parentNode,b.nextSibling)})};RR.fn.prototype.prepend=function(a){return this.each(function(b){RR.insertNodeBefore(a,b,b.firstChild)})};RR.fn.prototype.append=function(a){return this.each(function(b){RR.insertNodeBefore(a,b)})};RR.fn.prototype.insertBefore=function(a){$(a).before(this);return this};RR.fn.prototype.insertAfter=function(a){$(a).after(this);return this}; RR.fn.prototype.prependTo=function(a){$(a).prepend(this);return this};RR.fn.prototype.appendTo=function(a){$(a).append(this);return this};RR.fn.prototype.width=function(){var a=this.context[0];return a&&a.offsetWidth};RR.fn.prototype.height=function(){var a=this.context[0];return a&&a.offsetHeight};RR.fn.prototype.first=function(){return this.eq(0)};RR.fn.prototype.last=function(){return this.eq(-1)};RR.fn.prototype.eq=function(a){return $(this.get(a))}; RR.fn.prototype.get=function(a){var b=this.length;a+=0>a?b:0;return a>b-1?null:this.context[a]};RR.fn.prototype.parent=function(){var a=new RR.fn,b=[];this.each(function(a){b.push(a.parentNode)});a.context=b;a.length=b.length;return a}; RR.fn.prototype.children=function(){var a=new RR.fn,b=[];this.each(function(a){if(ENABLE_IE_SUPPORT)if("children"in a)b=[].concat.apply(b,a.children);else for(var d=0,e=a.childNodes.length;d<e;d++){var f=a.childNodes[d];1==f.nodeType&&b.push(f)}else b=[].concat.apply(b,a.children)});a.context=b;a.length=b.length;return a};RR.fn.prototype.clone=function(a){var b=new RR.fn,c=[];this.each(function(b){c.push(b.cloneNode(!!a))});b.context=c;b.length=c.length;return b}; RR.fn.uid=function(a){return a.__ruid||(a.__ruid=RR.uid++)}; RR.loader={callbacks:[],isInited:!1,isLoaded:!1,init:function(){if("loading"!==DOC.readyState)RR.loader.loaded();else if(!1===RR.loader.isInited)if(RR.loader.isInited=!0,DOC.addEventListener)DOC.addEventListener("DOMContentLoaded",RR.loader.loaded);else{var a=DOC.getElementById,b=a("_ir_");b||DOC.write('<script id="_ir_" defer="true" src="://">\x3c/script>');b=a("_ir_");b.onreadystatechange=function(){"complete"==this.readyState&&RR.loader.loaded()}}},loaded:function(){RR.loader.isLoaded=!0;RR.loader.fire()}, fire:function(){for(var a=RR.loader.callbacks,b=0,c=a.length;b<c;b++)if(ENABLE_DEBUG)a[b]();else try{a[b]()}catch(d){}RR.loader.callbacks=[]}};RR.fn.prototype.offset=function(){var a=this.context[0],b={left:0,top:0};if(a){do b.left+=a.offsetLeft||0,b.top+=a.offsetTop||0,a=a.offsetParent;while(a)}return b};RR.fn.prototype.html=function(a){if("undefined"!==typeof a)return this.each(function(b){b&&"innerHTML"in b&&(b.innerHTML=a)});var b=this.context[0];return b&&b.innerHTML}; RR.fn.prototype.val=function(a){if("undefined"!==typeof a)return this.each(function(b){b.value=a});var b=this.context[0];return b&&b.value};RR.fn.prototype.attr=function(a,b){if("undefined"!==typeof b)return this.each(function(c){c.setAttribute(a,b)});var c=this.context[0];return c&&c.getAttribute&&c.getAttribute(a)};RR.fn.prototype.removeAttr=function(a){return this.each(function(b){b.removeAttribute&&b.removeAttribute(a)})}; RR.fn.prototype.css=function(a,b){return this.each(function(c){if("object"!==typeof a){var d={};d[a]=b;a=d}for(var e in a)d=a[e],""!==d&&(!isNaN(d)&&0!=d)&&(d+="px"),c.style[e]=d})};RR.fn.prototype.hasClass=function(a){a=(a||"").match(/\S+/g)||[];for(var b=a.length,c=0,d,e=this.length;c<e;c++)for(d=0;d<b;d++)if(-1<(" "+this.context[c].className+" ").indexOf(" "+a[d]+" "))return!0;return!1}; RR.fn.prototype.addClass=function(a){var b=(a||"").match(/\S+/g)||[],c=b.length;return this.each(function(a){var e=" "+(a.className||"")+" ",f,g;for(g=0;g<c;g++)f=b[g],0>e.indexOf(" "+f+" ")&&(e+=f+" ");a.className=e.trim()})};RR.fn.prototype.removeClass=function(a){var b=(a||"").match(/\S+/g)||[],c=b.length;return this.each(function(a){var e=" "+a.className+" ",f=e,g,h;for(h=0;h<c;h++)g=b[h],-1<e.indexOf(g)&&(e=e.replace(" "+g+" "," "));f!=e&&(a.className=e.trim())})}; RR.fn.prototype.toggleClass=function(a,b){var c=(a||"").match(/\S+/g)||[],d=c.length;return this.each(function(a){var f=" "+a.className+" ",g,h,k;for(k=0;k<d;k++)g=c[k],h=0>f.indexOf(" "+g+" "),"undefined"===typeof b&&(b=h),b?h&&(f+=g+" "):f=f.replace(" "+g+" "," ");a.className=f.trim()})};var UseTouchClick=!1;IsAndroid||(UseTouchClick=!0); RR.event=function(a){if(a instanceof RR.event)return a;var b=a.changedTouches,b=b&&0<b.length?b[0]:a;this.event=a;this.originalEvent=b;this.target=a.target||a.srcElement;this.type=a.type;return this};RR.event.prototype={isPropagationStopped:!1,preventDefault:function(){var a=this.event;a.preventDefault?a.preventDefault():a.returnValue=!1},stopPropagation:function(){var a=this.event;this.isPropagationStopped=!0;a.stopPropagation&&a.stopPropagation()}};RR.eventCache={}; RR.eventType={delegated:"|click|mouseover|mouseout|mousemove|focus|blur|touchstart|touchmove|touchend|touchcancel",captured:"|focus|blur|"};RR.addEvent=DOC.addEventListener?function(a,b,c,d){b.addEventListener(a,c,d)}:function(a,b,c,d){b.attachEvent("on"+a,c)};RR._addEventData=function(a,b,c,d){var e=RR.eventCache[a]||(RR.eventCache[a]={});b=e[b]||(e[b]=[]);e=-1!==RR.eventType.captured.indexOf(a);1>b.length&&(-1!==RR.eventType.delegated.indexOf(a)&&(c=DOC),RR.addEvent(a,c,RR.dispatchEvent,e));b.push(d)}; RR.addTagEvent=function(a,b,c){b="t"+b.toUpperCase();RR._addEventData(a,b,DOC,c)}; RR.dispatchEvent=function(a){a=new RR.event(a);var b=a.type,c=a.target,d=RR.eventCache[b]||{};if("click"===b&&UseTouchClick&&!a.originalEvent.isSimulated)a.preventDefault();else for(;c;){var b=RR.fn.uid(c),b=d[b]||[],e=!0,f=d["t"+c.nodeName];f&&(b=b.concat(f));for(var f=0,g=b.length;f<g;f++){var h=b[f].apply(c,[a]);!1===h&&(e=h)}!1===e&&(a.preventDefault(),a.stopPropagation());if(!0===a.isPropagationStopped)break;c=c.parentNode}}; RR.fn.prototype.on=function(a,b){if("object"===typeof a){for(var c in a)this.on(c,a[c]);return this}return this.each(function(c){var e=RR.fn.uid(c);RR._addEventData(a,e,c,b)})};RR.fn.prototype.trigger=function(a,b){var c=DOC.createEvent("MouseEvents");c.initEvent(a,!0,!0);c.data=b;c.isSimulated=!0;return this.each(function(b){if("function"===typeof b[a])b[a]();else b.dispatchEvent&&b.dispatchEvent(c)})}; RR.touchEvent={activeCls:"active",hasTouchStart:!1,init:function(){var a={onTouchStart:START_EVENT,onTouchMove:MOVE_EVENT,onTouchEnd:END_EVENT},b;for(b in a)RR.addEvent(a[b],DOC,RR.touchEvent[b],!1);RR.addEvent("touchcancel",DOC,RR.onTouchCancel,!1);UseTouchClick&&RR.addEvent("click",DOC,RR.dispatchEvent,!1)},onTouchStart:function(a){a=new RR.event(a);var b=a.originalEvent;a=a.target;var c=RR.eventCache.click||{};RR.touchEvent.clearHighlight();RR.touchEvent.hasTouchStart=!0;RR.touchEvent.elTarget= a;RR.touchEvent.startPoint=[b.screenX*ScreenSizeCorrect,b.screenY*ScreenSizeCorrect];for(RR.touchEvent.targets=[];a;)b=RR.fn.uid(a),(c[b]||-1<["A","INPUT","BUTTON"].indexOf(a.nodeName))&&RR.touchEvent.targets.push(RR.$(a).addClass(RR.touchEvent.activeCls)),a=a.parentNode},onTouchMove:function(a){var b=RR.touchEvent;if(b.hasTouchStart&&(a=new RR.event(a),a=a.originalEvent,Math.pow(Math.pow(a.screenX*ScreenSizeCorrect-b.startPoint[0],2)+Math.pow(a.screenY*ScreenSizeCorrect-b.startPoint[1],2),0.5)>MAX_TOUCHMOVE_DISTANCE_FOR_CLICK))b.onTouchCancel()}, onTouchEnd:function(){if(RR.touchEvent.hasTouchStart){var a=DOC.createEvent("MouseEvents"),b=RR.touchEvent.elTarget;RR.touchEvent.onTouchCancel();UseTouchClick&&(a.initEvent("click",!0,!0),a.isSimulated=!0,b.dispatchEvent(a))}},onTouchCancel:function(){RR.touchEvent.hasTouchStart=!1;RR.touchEvent.elTarget=null;setTimeout(RR.touchEvent.clearHighlight,200)},clearHighlight:function(){var a=RR.touchEvent.targets,b=RR.touchEvent.activeCls;if(a){for(var c=0,d=a.length;c<d;c++)a[c].removeClass(b);RR.touchEvent.targets= null}}};RR.touchEvent.init();
+
+		var Action = {
+
+			/* 当前callbackId数值 */
+			callbackId: 1,
+
+			/* 保存每个Action消息的回调函数，结构：
+				Action.callbacks = {
+					"callbackId1": function(data) {...},
+					"callbackId2":  function(data) {...},
+				}
+
+			 */
+			callbacks: {},
+
+			/* 向App发送Action消息 */
+			send: function(type, data) {
+				var actionURL = 'ax://' + type;
+
+				var params = [];
+				if (data) {
+					if (data['callback']) {
+						var callbackId = Action.callbackId++;
+						Action.callbacks[callbackId] = data['callback'];
+						data['callbackId'] = callbackId;
+					}
+					for (var key in data) {
+						if ('callback' == key) {
+							continue;
+						}
+						params.push(encodeURIComponent(key) +'=' + encodeURIComponent(data[key]));
+					}
+				} 
+
+				actionURL += '?' + params.join('&');
+				location.href = actionURL;
+			},
+
+			/* 从App接收Action消息的回调（此方法由App内部调用） */
+			callback: function(data) {
+				var callbackId = data['callbackId'],
+					callbackFn;
+
+				if (callbackId) {
+					callbackFn = Action.callbacks[callbackId];
+					if (callbackFn) {
+						callbackFn(data);
+					}
+					delete Action.callbacks[callbackId];
+				}
+			}
+		}
+
+		$().ready(function() {
+			$('.send_message').on('click', function() {
+				Action.send('send_message', {
+					'message': this.innerHTML,
+					'callback': function() {
+						this.style.backgroundColor = '#d85335';
+					}.bind(this)
+				})
+			});
+			$('.take_photo').on('click', function() {
+				Action.send('take_photo', {
+					'callback': function(data) {
+						$('.image_box').html('<img src="data:image/jpeg;base64,' + data.image + '" />');
+					}.bind(this)
+				})
+			});
+		});
+	</script>
+	<style type="text/css">
+		div{
+			-webkit-box-sizing:border-box;
+			box-sizing:border-box;
+		}
+		body{
+			margin:0;
+			padding:0;
+			color:#333;
+			font-family:Helvetica,Arial;
+			font-size:.9em;
+		}
+		body,html{
+			height:100%;
+		}
+		a{
+			text-decoration:none;
+			-webkit-tap-highlight-color:rgba(0,0,0,0);
+			-webkit-touch-callout:none;
+		}
+		.box{
+			padding:.5em 0;
+			text-align:center;
+			height:100%;
+			background:#f5f5f5;
+			border-bottom:1px solid #ddd;
+		}
+		.button{
+			display:inline-block;
+			padding:.8em 2em;
+			color:#fff;
+			font-weight:bold;
+			background:#59bb9c;
+			margin-bottom:.5em;
+		}
+		.button.active{
+			background:#3fa27b;
+		}
+
+		.image_box img{
+			max-width:75px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<a class="button send_message">Hello App!</a>
+		<a class="button send_message">Another Message!</a>
+		<a class="button take_photo">Take Photo</a>
+		<div class="image_box"></div>
+	</div>
+</body>
+</html>
