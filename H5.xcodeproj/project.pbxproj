@@ -24,9 +24,9 @@
 		FA73A5C617888B92001104DB /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = FA73A5C517888B92001104DB /* blank.png */; };
 		FA73A5C817888D85001104DB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA73A5C717888D85001104DB /* Default-568h@2x.png */; };
 		FA73A5CA17888DC3001104DB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FA73A5C917888DC3001104DB /* Default.png */; };
-		FA73A5D01789A52B001104DB /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = FA73A5CC1789A52B001104DB /* CHANGELOG.md */; };
-		FA73A5D11789A52B001104DB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FA73A5CE1789A52B001104DB /* JSONKit.m */; };
-		FA73A5D21789A52B001104DB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FA73A5CF1789A52B001104DB /* README.md */; };
+		FA968873178BF1700080DBDC /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = FA96886F178BF1700080DBDC /* CHANGELOG.md */; };
+		FA968874178BF1700080DBDC /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = FA968871178BF1700080DBDC /* JSONKit.m */; };
+		FA968875178BF1700080DBDC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FA968872178BF1700080DBDC /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,10 +55,10 @@
 		FA73A5C517888B92001104DB /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
 		FA73A5C717888D85001104DB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FA73A5C917888DC3001104DB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		FA73A5CC1789A52B001104DB /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
-		FA73A5CD1789A52B001104DB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		FA73A5CE1789A52B001104DB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		FA73A5CF1789A52B001104DB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		FA96886F178BF1700080DBDC /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CHANGELOG.md; path = ../../../JSONKit/CHANGELOG.md; sourceTree = "<group>"; };
+		FA968870178BF1700080DBDC /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = ../../../JSONKit/JSONKit.h; sourceTree = "<group>"; };
+		FA968871178BF1700080DBDC /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = ../../../JSONKit/JSONKit.m; sourceTree = "<group>"; };
+		FA968872178BF1700080DBDC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../../../JSONKit/README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,10 +150,10 @@
 		FA73A5CB1789A52B001104DB /* JSONKit */ = {
 			isa = PBXGroup;
 			children = (
-				FA73A5CC1789A52B001104DB /* CHANGELOG.md */,
-				FA73A5CD1789A52B001104DB /* JSONKit.h */,
-				FA73A5CE1789A52B001104DB /* JSONKit.m */,
-				FA73A5CF1789A52B001104DB /* README.md */,
+				FA96886F178BF1700080DBDC /* CHANGELOG.md */,
+				FA968870178BF1700080DBDC /* JSONKit.h */,
+				FA968871178BF1700080DBDC /* JSONKit.m */,
+				FA968872178BF1700080DBDC /* README.md */,
 			);
 			path = JSONKit;
 			sourceTree = "<group>";
@@ -218,8 +218,8 @@
 				FA73A5C617888B92001104DB /* blank.png in Resources */,
 				FA73A5C817888D85001104DB /* Default-568h@2x.png in Resources */,
 				FA73A5CA17888DC3001104DB /* Default.png in Resources */,
-				FA73A5D01789A52B001104DB /* CHANGELOG.md in Resources */,
-				FA73A5D21789A52B001104DB /* README.md in Resources */,
+				FA968873178BF1700080DBDC /* CHANGELOG.md in Resources */,
+				FA968875178BF1700080DBDC /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +236,7 @@
 				FA73A5B317885F11001104DB /* AXRootViewController.m in Sources */,
 				FA73A5B617886C9D001104DB /* AXWebView.m in Sources */,
 				FA73A5BE17887BFC001104DB /* NSStringPlus.m in Sources */,
-				FA73A5D11789A52B001104DB /* JSONKit.m in Sources */,
+				FA968874178BF1700080DBDC /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +265,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -295,7 +296,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
