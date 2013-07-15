@@ -111,20 +111,30 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
 	[self dismissModalViewControllerAnimated:YES];
-	
-	UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-	NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
-	NSString *encodedString = [self base64Encoding:imageData];
-	
-	NSDictionary *data = @{
-		@"image": encodedString,
-		@"callbackId":_callbackId
-	};
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"ActionMessageCallback"
-														object:nil
-													  userInfo:data];
 	[picker release];
+	
+	[info retain];
+
+	__block id callbackId = _callbackId;
+
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+	
+		UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+		NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+		NSString *encodedString = [self base64Encoding:imageData];
+
+		dispatch_async(dispatch_get_main_queue(), ^{
+
+			NSDictionary *data = @{@"image": encodedString,@"callbackId":callbackId};
+
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"ActionMessageCallback"
+																object:nil
+															  userInfo:data];
+		});
+	});
+
+	[info release];
+	
 }
 
 - (NSString*)base64Encoding:(NSData*)theData
