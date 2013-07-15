@@ -36,27 +36,34 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-
+	[self actionSendAppEvent:@"deviceResignActive"];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-
+	[self actionSendAppEvent:@"deviceEnterBackground"];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-
+	[self actionSendAppEvent:@"deviceEnterForeground"];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-
+	[self actionSendAppEvent:@"deviceActive"];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+	[self actionSendAppEvent:@"deviceEnd"];
+}
 
+- (void)actionSendAppEvent:(NSString*)eventName{
+	NSDictionary *data = @{@"event": eventName};
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"ActionAppEvent"
+														object:nil
+													  userInfo:data];
 }
 
 @end

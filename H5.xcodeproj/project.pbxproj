@@ -17,7 +17,6 @@
 		FA73A5B317885F11001104DB /* AXRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA73A5B217885F11001104DB /* AXRootViewController.m */; };
 		FA73A5B617886C9D001104DB /* AXWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA73A5B517886C9D001104DB /* AXWebView.m */; };
 		FA73A5B917886E26001104DB /* page.html in Resources */ = {isa = PBXBuildFile; fileRef = FA73A5B817886E26001104DB /* page.html */; };
-		FA73A5BB178873CB001104DB /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = FA73A5BA178873CB001104DB /* styles.css */; };
 		FA73A5BE17887BFC001104DB /* NSStringPlus.m in Sources */ = {isa = PBXBuildFile; fileRef = FA73A5BD17887BFC001104DB /* NSStringPlus.m */; };
 		FA73A5C017888761001104DB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA73A5BF17888761001104DB /* icon@2x.png */; };
 		FA73A5C217888892001104DB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA73A5C117888892001104DB /* icon.png */; };
@@ -48,7 +47,6 @@
 		FA73A5B417886C9D001104DB /* AXWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AXWebView.h; sourceTree = "<group>"; };
 		FA73A5B517886C9D001104DB /* AXWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AXWebView.m; sourceTree = "<group>"; };
 		FA73A5B817886E26001104DB /* page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = page.html; sourceTree = "<group>"; };
-		FA73A5BA178873CB001104DB /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
 		FA73A5BC17887BFC001104DB /* NSStringPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringPlus.h; sourceTree = "<group>"; };
 		FA73A5BD17887BFC001104DB /* NSStringPlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringPlus.m; sourceTree = "<group>"; };
 		FA73A5BF17888761001104DB /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				FA73A5B817886E26001104DB /* page.html */,
-				FA73A5BA178873CB001104DB /* styles.css */,
 			);
 			name = web;
 			sourceTree = "<group>";
@@ -215,7 +212,6 @@
 			files = (
 				FA73A59917885E01001104DB /* InfoPlist.strings in Resources */,
 				FA73A5B917886E26001104DB /* page.html in Resources */,
-				FA73A5BB178873CB001104DB /* styles.css in Resources */,
 				FA73A5C017888761001104DB /* icon@2x.png in Resources */,
 				FA73A5C217888892001104DB /* icon.png in Resources */,
 				FA73A5C4178888FC001104DB /* Default@2x.png in Resources */,
@@ -353,6 +349,7 @@
 				FA73A5B017885E01001104DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

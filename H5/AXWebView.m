@@ -20,7 +20,16 @@
 		self.opaque = NO;
 		self.backgroundColor = [UIColor clearColor];
 		self.scrollView.bounces = NO;
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onActionMessageCallback:) name:@"ActionMessageCallback" object:nil];
+
+
+		/* Action消息的回调 */
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(onActionMessageCallback:)
+													 name:@"ActionMessageCallback" object:nil];
+		/* 设备事件 */
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(onActionAppEvent:)
+													 name:@"ActionAppEvent" object:nil];
     }
     return self;
 }
@@ -52,6 +61,7 @@
 	return YES;
 }
 
+/* 调用webView中的回调方法 */
 - (void)onActionMessageCallback:(NSNotification*)notification
 {
 	NSDictionary *data = notification.userInfo;
@@ -62,6 +72,26 @@
 		[self stringByEvaluatingJavaScriptFromString:script];
 		NSLog(@"JSON: %@", jsonString);
 	}
+}
+
+/* 向webView发送设备事件 */
+- (void)onActionAppEvent:(NSNotification*)notification
+{
+	NSDictionary *data = notification.userInfo;
+	NSString *jsonString;
+	NSString *eventName = [NSString stringWithFormat:@"\"%@\"", [data objectForKey:@"event"]];
+
+	data = [data objectForKey:@"data"];
+
+	if (data != nil) {
+		jsonString = [data JSONString];
+	} else {
+		jsonString = @"null";
+	}
+	
+	NSString *script = [NSString stringWithFormat:@"Action.deviceEvent(%@, %@)", eventName, jsonString];
+	[self stringByEvaluatingJavaScriptFromString:script];
+	
 }
 
 @end
